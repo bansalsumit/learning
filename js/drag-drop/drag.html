@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drag-Drop</title>
+    <link rel="stylesheet" type="text/css" href="drag.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script type="text/javascript" src="drag.js"></script>
+  </head>
+  <body>
+ <p id="0" draggable="true" ondragstart="dragstart_handler(event);">This element is draggable.</p>
+    <!-- <select id="11" multiple ondrop="drop_handler(event);" ondragover="dragover_handler(event);"> -->
+    <select id="11" multiple="multiple">
+      <option id="13" value="tn" draggable="true" ondragstart="dragstart_handler(event);" >tamilnadu</option>
+      <option value="dh" draggable="true" ondragstart="dragstart_handler(event);">delhi</option>
+      <option value="hy" draggable="true" ondragstart="dragstart_handler(event);">haryana</option>
+      <option value="aa" draggable="true" ondragstart="dragstart_handler(event);">assam</option>
+      <option value="pj" draggable="true" ondragstart="dragstart_handler(event);">punjab</option>
+      <option value="up" draggable="true" ondragstart="dragstart_handler(event);">uttar pradesh</option>
+      <option value="mp" draggable="true" ondragstart="dragstart_handler(event);">madhya pradesh</option>
+      <option value="ap" draggable="true" ondragstart="dragstart_handler(event);">andhra pradesh</option>
+      <option value="al" draggable="true" ondragstart="dragstart_handler(event);">arunachal pradesh</option>
+      <option value="hp" draggable="true" ondragstart="dragstart_handler(event);">himachal pradesh</option>
+    </select>
+    <select id="12" multiple ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></select>
+  </body>
+</html>
