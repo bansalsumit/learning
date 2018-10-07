@@ -1,4 +1,15 @@
-select {
-  height: 200px;
+.ul-droppable {
+  border: 1px;
+  border-style: solid;
+  border-color: red;
+}
+
+.styleAdd {
+  border-style: solid;
+  border-color: yellow;
+}
+
+.div-ul {
   width: 200px;
+  display: inline-block;
 }
