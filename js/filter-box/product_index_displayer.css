@@ -1,0 +1,20 @@
+#products-container {
+  height: 350px;
+  width: 900px;
+  margin-left: 200px;
+}
+
+#product-filter-container {
+  float: left;
+  width: 150px;
+  height: 350px;
+}
+
+#container {
+  height: 400px;
+  margin: 20px;
+}
+
+.filter-checkbox {
+  margin-left: 25px;
+}
