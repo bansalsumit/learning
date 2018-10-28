@@ -33,8 +33,21 @@ ProductHandler.prototype.bindEvent = function() {
   this.$filterCheckbox.on('click', this.applyFilter());
 };
 
-ProductHandler.prototype.checkObjectEmtpy = function() {
+ProductHandler.prototype.elementArrayDataLength = function(object, attribute) {
+  return object.data(attribute).length;
+};
 
+ProductHandler.prototype.checkValueNotPresentInArray = function(value, array) {
+  return jQuery.inArray(value, array) < 0;
+};
+
+ProductHandler.prototype.checkProductMatchOtherFilters = function(product, filter, filter_type, filter_attribute) {
+  if (this.elementArrayDataLength(filter, filter_attribute) && this.checkValueNotPresentInArray(product[filter.data(filter_type)], filter.data(filter_attribute))) {
+    return false;
+  }
+  else {
+    return true;
+  }
 };
 
 ProductHandler.prototype.applyFilter = function() {
@@ -54,22 +67,7 @@ ProductHandler.prototype.applyFilter = function() {
     $.each(_this.$product_array, function(index, product) {
       firstSibling = parentElement.siblings().first();
       secondSibling = parentElement.siblings().last();
-      firstSiblingTrue = true;
-      secondSiblingTrue = true;
-      if (jQuery.isEmptyObject(firstSibling.data('type-selected')) == false) {
-        if (jQuery.inArray( product[firstSibling.data('type')], firstSibling.data('type-selected') ) == -1) {
-          firstSiblingTrue = false;
-        }
-      }
-      if (jQuery.isEmptyObject(secondSibling.data('type-selected')) == false) {
-        if (jQuery.inArray( product[secondSibling.data('type')], secondSibling.data('type-selected') ) == -1) {
-          secondSiblingTrue = false;
-        }
-      }
-      if ((jQuery.inArray( product[parentElement.data('type')], selectedCheckboxesData ) != -1) && firstSiblingTrue && secondSiblingTrue ) {
-        product_array.push(product);
-      }
-      if ((selectedCheckboxesData.length == 0) && firstSiblingTrue && secondSiblingTrue ) {
+      if ((!(_this.checkValueNotPresentInArray( product[parentElement.data('type')], selectedCheckboxesData )) || (selectedCheckboxesData.length == 0)) && (_this.checkProductMatchOtherFilters(product, firstSibling, 'type', 'type-selected')) && (_this.checkProductMatchOtherFilters(product, secondSibling, 'type', 'type-selected'))) {
         product_array.push(product);
       }
     });
