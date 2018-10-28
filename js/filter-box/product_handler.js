@@ -50,6 +50,17 @@ ProductHandler.prototype.checkProductMatchOtherFilters = function(product, filte
   }
 };
 
+ProductHandler.prototype.getProductsWhichMatchWithFiltersCriteria = function(parentElement, selectedCheckboxesData) {
+  var _this = this;
+  $.each(this.$product_array, function(index, product) {
+    firstSibling = parentElement.siblings().first();
+    secondSibling = parentElement.siblings().last();
+    if ((!(_this.checkValueNotPresentInArray( product[parentElement.data('type')], selectedCheckboxesData )) || (selectedCheckboxesData.length == 0)) && (_this.checkProductMatchOtherFilters(product, firstSibling, 'type', 'type-selected')) && (_this.checkProductMatchOtherFilters(product, secondSibling, 'type', 'type-selected'))) {
+      product_array.push(product);
+    }
+  });
+};
+
 ProductHandler.prototype.applyFilter = function() {
   var _this = this;
   return function(event) {
@@ -64,13 +75,7 @@ ProductHandler.prototype.applyFilter = function() {
       }
     });
     parentElement.data('type-selected', selectedCheckboxesData);
-    $.each(_this.$product_array, function(index, product) {
-      firstSibling = parentElement.siblings().first();
-      secondSibling = parentElement.siblings().last();
-      if ((!(_this.checkValueNotPresentInArray( product[parentElement.data('type')], selectedCheckboxesData )) || (selectedCheckboxesData.length == 0)) && (_this.checkProductMatchOtherFilters(product, firstSibling, 'type', 'type-selected')) && (_this.checkProductMatchOtherFilters(product, secondSibling, 'type', 'type-selected'))) {
-        product_array.push(product);
-      }
-    });
+    _this.getProductsWhichMatchWithFiltersCriteria(parentElement, selectedCheckboxesData);
     _this.productView(product_array);
   };
 };
