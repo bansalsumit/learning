@@ -1,7 +1,8 @@
-function ProductHandler(url, divProductContainer, filterCheckbox) {
+function ProductHandler(url, divProductContainer, filterCheckbox, sortingCheckbox) {
   this.$json_url = url;
   this.$divProductContainer = $(divProductContainer);
   this.$filterCheckbox = $(filterCheckbox);
+  this.$sortingCheckbox = $(sortingCheckbox);
   this.$product_array = [];
 };
 
@@ -31,6 +32,14 @@ ProductHandler.prototype.init = function() {
 
 ProductHandler.prototype.bindEvent = function() {
   this.$filterCheckbox.on('click', this.applyFilter());
+  this.$sortingCheckbox.on('click', this.sortingProduct());
+};
+
+ProductHandler.prototype.sortingProduct = function() {
+  var _this = this;
+  return function(event) {
+    _this.$filterCheckbox.first().triggerHandler("click");
+  };
 };
 
 ProductHandler.prototype.elementArrayDataLength = function(object, attribute) {
@@ -61,6 +70,20 @@ ProductHandler.prototype.getProductsWhichMatchWithFiltersCriteria = function(par
   });
 };
 
+ProductHandler.prototype.sortingNameVice = function(product_array, attribute) {
+  product_array.sort(function(firstElement, secondElement) {
+    if (firstElement[attribute] > secondElement[attribute]) {
+      return 1;
+    }
+    else if (firstElement[attribute] < secondElement[attribute]) {
+      return -1;
+    }
+    else {
+      return 0;
+    }
+  });
+};
+
 ProductHandler.prototype.applyFilter = function() {
   var _this = this;
   return function(event) {
@@ -76,12 +99,19 @@ ProductHandler.prototype.applyFilter = function() {
     });
     parentElement.data('type-selected', selectedCheckboxesData);
     _this.getProductsWhichMatchWithFiltersCriteria(parentElement, selectedCheckboxesData);
+    $.each(_this.$sortingCheckbox, function(i, element) {
+      if ($('#' + element.id).prop("checked") == true ) {
+        _this.sortingNameVice(product_array, element.value);
+
+      }
+      debugger
+    })
     _this.productView(product_array);
   };
 };
 
 $( document ).ready(function() {
-  var product_handler = new ProductHandler('product.json', '#products-container', '.filter-checkbox');
+  var product_handler = new ProductHandler('product.json', '#products-container', '.filter-checkbox', '.sorting');
   product_handler.init();
   product_handler.bindEvent();
 });

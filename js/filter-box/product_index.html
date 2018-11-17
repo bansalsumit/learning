@@ -13,24 +13,32 @@
   <body>
     <div id="container">
       <div id="product-filter-container">
-        <div data-type-selected=[] data-type="color" id="color-selector" data-sibling-type="[brand, sold_out]">
-          <p>Color</p>
-          <input id="1" type="checkbox" name="color" class="filter-checkbox" value="Yellow" data-value='' data-product-type='color'>Yellow</br>
-          <input id="2" type="checkbox" name="color" class="filter-checkbox" value="Red" data-value='' data-product-type='color'>Red</br>
-          <input id="3" type="checkbox" name="color" class="filter-checkbox" value="Green" data-value='' data-product-type='color'>Green</br>
-          <input id="4" type="checkbox" name="color" class="filter-checkbox" value="Blue" data-value='' data-product-type='color'>Blue</br>
+        <div>
+          <div data-type-selected=[] data-type="color" id="color-selector" data-sibling-type="[brand, sold_out]">
+            <p>Color</p>
+            <input id="1" type="checkbox" name="color" class="filter-checkbox" value="Yellow" data-value='' data-product-type='color'>Yellow</br>
+            <input id="2" type="checkbox" name="color" class="filter-checkbox" value="Red" data-value='' data-product-type='color'>Red</br>
+            <input id="3" type="checkbox" name="color" class="filter-checkbox" value="Green" data-value='' data-product-type='color'>Green</br>
+            <input id="4" type="checkbox" name="color" class="filter-checkbox" value="Blue" data-value='' data-product-type='color'>Blue</br>
+          </div>
+          <div data-type-selected=[] data-type="brand" id="brand-selector" data-sibling-type="[color, sold_out]">
+            <p>Brand</p>
+            <input id="5" type="checkbox" name="brand" class="filter-checkbox" value="BRAND A" data-value='' data-product-type='brand'>A</br>
+            <input id="6" type="checkbox" name="brand" class="filter-checkbox" value="BRAND B" data-value='' data-product-type='brand'>B</br>
+            <input id="7" type="checkbox" name="brand" class="filter-checkbox" value="BRAND C" data-value='' data-product-type='brand'>C</br>
+
+            <input id="8" type="checkbox" name="brand" class="filter-checkbox" value="BRAND D" data-value='' data-product-type='brand'>D</br>
+          </div>
+          <div data-type-selected=[] , data-type="sold_out" id="sold-out-selector" data-sibling-type="[brand, color]">
+            <p>SoldOut</p>
+            <input id="9" type="checkbox" name="sold_out" class="filter-checkbox" value="0" data-value='' data-product-type='sold_out'>NotSoldOut</br>
+            <input id="10" type="checkbox" name="sold_out" class="filter-checkbox" value="1" data-value='' data-product-type='sold_out'>SoldOut</br>
+          </div>
         </div>
-        <div data-type-selected=[] data-type="brand" id="brand-selector" data-sibling-type="[color, sold_out]">
-          <p>Brand</p>
-          <input id="5" type="checkbox" name="brand" class="filter-checkbox" value="BRAND A" data-value='' data-product-type='brand'>A</br>
-          <input id="6" type="checkbox" name="brand" class="filter-checkbox" value="BRAND B" data-value='' data-product-type='brand'>B</br>
-          <input id="7" type="checkbox" name="brand" class="filter-checkbox" value="BRAND C" data-value='' data-product-type='brand'>C</br>
-          <input id="8" type="checkbox" name="brand" class="filter-checkbox" value="BRAND D" data-value='' data-product-type='brand'>D</br>
-        </div>
-        <div data-type-selected=[] , data-type="sold_out" id="sold-out-selector" data-sibling-type="[brand, color]">
-          <p>SoldOut</p>
-          <input id="9" type="checkbox" name="sold_out" class="filter-checkbox" value="0" data-value='' data-product-type='sold_out'>NotSoldOut</br>
-          <input id="10" type="checkbox" name="sold_out" class="filter-checkbox" value="1" data-value='' data-product-type='sold_out'>SoldOut</br>
+        <div>
+          <p>sorting</p>
+          <input id="11" type="checkbox" name="color-sorting" class="sorting" value="color" data-product-type='color'>color</br>
+          <input id="12" type="checkbox" name="name-sorting" class="sorting" value="brand" data-product-type='brand'>brand</br>
         </div>
       </div>
       <div id="products-container">
