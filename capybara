@@ -1,0 +1,8 @@
+1. https://github.com/rails/rails/blob/master/guides/bug_report_templates/active_record_gem.rb
+2. .rspec reuire --require rails_helper because in your case you add spec_helper in rails helper not a rails helper in spec helper.
+3. Use include Rails.application.routes.url_helpers to get route path and url in anywhere you can also use this in console.
+4. Rails s run automatically with capybara testing if it include rails helper otherwise you have to run it yourself.
+5. Spec testing file name should be end with spec so that when you run bundle exec rspec it run all specs automatically.
+6. Debugger in spec stop at console at your debugger position.
+
+

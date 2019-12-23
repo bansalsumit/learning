@@ -1,0 +1,15 @@
+1. Don’t need this as we are already on trucks show page. Will fire unnecessary queries.
+2. Remove do…end if not needed.
+3. validation for paid_at which is date type. If it is present, it must be a valid date. allow nil.
+4. Numerical value Must be only integer. and if you want add greater then less then value add it.
+5. Both of these should be before_save instead of before_create. if any attribute change by update and create action also.
+6. given: paid_at_round_off_to_the_beginning_of_day, paid_until_round_off_to_the_beginning_of_day
+Rename to round_off_paid_at_to_beginning_of_day and round_off_paid_until_to_end_of_day. Basically, it should be a verb.
+7. Add index. to those attributes which take id of other models.
+8. This will break if paid_at is nil. check for nil
+
+
+
+
+
+

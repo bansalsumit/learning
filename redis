@@ -1,0 +1,8 @@
+redis open by redis-cli(cli is for client)
+redis exit is exit
+can we extract out the redis get calls and do an mget here ?
+ or even mapped mget 
+ it will reduce the redis load
+please google redis mget and redis mapped mget, 
+ mapped mget is ruby specific
+

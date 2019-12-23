@@ -1,0 +1,11 @@
+1. validates :type, uniqueness: { scope: :truck_id }
+it is use for giving scope to validations and rails did changes self like it test only other associated objects and run only when this attribute changed and 
+validates presence
+it not run even query check itself
+2. has_one :latest_vehicle_payment_log, -> { order(created_at: :desc).first },
+    class_name: 'VehiclePaymentLog'
+scope return relation of objects that's why you cannot give object in return. and it give 'except' error 
+use has_one :latest_vehicle_payment_log, -> { order(created_at: :desc).limit(1) },
+    class_name: 'VehiclePaymentLog'
+it give you arel with one record
+3. when object attribute of DateTime type value not changed in object it means you seeing it very clearly first always in db we store UTC time because it is same for all and when you seeing object attribute then it show your time like IST. so it always change see number very deeply.
